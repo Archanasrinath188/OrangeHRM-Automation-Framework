@@ -7,15 +7,15 @@
 
     <test name="Chrome Test">
 
-        <parameter name="browser" value="firefox"/>
+        <parameter name="browser" value="chrome"/>
         <parameter name="os" value="windows"/>
 
         <classes>
 
-            <class name="testCases.TC001LoginData"/>
-          <!--class name="testCases.TC002DashboardData"/>
+            <!--class name="testCases.TC001LoginData"/>
+          <class name="testCases.TC002DashboardData"/>-->
             <class name="testCases.TC003PimData"/>
-            <class name="testCases.TC004AdminData"/>
+            <!--class name="testCases.TC004AdminData"/>
             <class name="testCases.TC005LeaveData"/>
             <class name="testCases.TC006RecruitmentData"/>-->
 

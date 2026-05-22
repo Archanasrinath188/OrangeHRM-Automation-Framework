@@ -6,15 +6,15 @@
   </listeners>
   <test thread-count="5" name="Chrome Test(failed)">
     <parameter name="os" value="windows"/>
-    <parameter name="browser" value="firefox"/>
+    <parameter name="browser" value="chrome"/>
     <classes>
-      <class name="testCases.TC001LoginData">
+      <class name="testCases.TC003PimData">
         <methods>
-          <include name="Verify_logindata" invocation-numbers="0 1 2 3"/>
           <include name="teardown"/>
+          <include name="pim_data"/>
           <include name="setup"/>
         </methods>
-      </class> <!-- testCases.TC001LoginData -->
+      </class> <!-- testCases.TC003PimData -->
     </classes>
   </test> <!-- Chrome Test(failed) -->
 </suite> <!-- Failed suite [OrangeHRM Suite] -->
