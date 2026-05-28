@@ -1,13 +1,23 @@
 package PageObjects;
 
+import java.time.Duration;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class PIMpage<webelement> extends BasePage {
+public class PIMpage<webelement> extends BasePage{
+	
+    WebDriverWait wait;
+
 
 	public PIMpage(WebDriver driver) {
 		super(driver);
+		
+	    wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -48,38 +58,47 @@ public class PIMpage<webelement> extends BasePage {
 	
 	
 	public void pim_click() {
-		pim.click();
-		
+		wait.until(
+				ExpectedConditions.visibilityOf(pim)
+				).click();		
 	}
 	
-	public void add_employee(String fname,String lname) {
-		addemployee.click();
-		firstname.sendKeys(fname);
-		lastname.sendKeys(lname);
-		save.click();
+	public void add_employee(String fname,String lname)
+	{
+	    wait.until(ExpectedConditions.elementToBeClickable(addemployee)).click();
 
+	    wait.until(ExpectedConditions.visibilityOf(firstname)).sendKeys(fname);
+
+	    wait.until(ExpectedConditions.visibilityOf(lastname)).sendKeys(lname);
+
+	    wait.until(ExpectedConditions.elementToBeClickable(save)).click();
 	}
-	
 	public void employeelist() {
-		employee_list.click();
+		
+	    wait.until(ExpectedConditions.elementToBeClickable(employee_list)).click();
+
 	}
 	
 	
 	public void search_employee(String Ename) {
 		
-		employeename.sendKeys(Ename);
-		search.click();
+		
+	    wait.until(ExpectedConditions.visibilityOf(employeename)).sendKeys(Ename);
+	    wait.until(ExpectedConditions.elementToBeClickable(search)).click();
+
+
+		
 		
 	}
 
     public void clickDelete()
     {
-       delete_btn.click();
+	    wait.until(ExpectedConditions.elementToBeClickable(delete_btn)).click();
     }
 
     public void confirmDelete()
     {
-        confirm_delete.click();
+	    wait.until(ExpectedConditions.elementToBeClickable(confirm_delete)).click();
     }
 	
 	}

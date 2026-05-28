@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.util.Date;
 import java.util.Properties;
 
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -60,14 +61,13 @@ public class BaseClass {
 		   
 	}
 	
-	public String captureScreen(String tname) {
+	public String captureScreen(String tname) throws IOException {
 		String timeStamp=new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		TakesScreenshot  takescreenshot= (TakesScreenshot)driver;
 		File sourcefile = takescreenshot.getScreenshotAs(OutputType.FILE);
 		String targetFilePath=System.getProperty("user.dir")+"\\screenshot\\"+tname+"_"+timeStamp+".png";
 		File targetFile=new File(targetFilePath);
-		sourcefile.renameTo(targetFile);
-		
+		FileUtils.copyFile(sourcefile, targetFile);		
 		
 		return targetFilePath;
 	

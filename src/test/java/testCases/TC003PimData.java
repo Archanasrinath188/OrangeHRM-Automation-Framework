@@ -15,6 +15,9 @@ public class TC003PimData extends BaseClass {
 	                new LoginPage(driver);
 
 	        lp.login_data("Admin", "admin123");
+	        
+	        Assert.assertTrue(driver.getPageSource().contains("Dashboard"));
+
 
 
 	        PIMpage pm = new PIMpage(driver);
@@ -27,6 +30,9 @@ public class TC003PimData extends BaseClass {
 
 	        Thread.sleep(3000);
 	        
+	        Assert.assertTrue(driver.getPageSource().contains("Personal Details"));
+
+	        
 	        pm.employeelist();
 	        Thread.sleep(3000);
 
@@ -35,6 +41,9 @@ public class TC003PimData extends BaseClass {
 	        pm.search_employee("Archana M");
 
 	        Thread.sleep(2000);
+	        
+	        Assert.assertTrue(driver.getPageSource().contains("Archana"));
+
 
 	        // Delete Employee
 	        pm.clickDelete();
